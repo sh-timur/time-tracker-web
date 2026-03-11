@@ -13,7 +13,7 @@
       <option value="">Select category</option>
       <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
       } @else {
-      <option value="" disabled>No categories available</option>
+      <option value="" disabled>No categories. Create one first</option>
       }
     </select>
   </label>
