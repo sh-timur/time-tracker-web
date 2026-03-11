@@ -47,18 +47,20 @@ li button {
 
 form {
   display: flex;
-  gap: 8px;
+  gap: 10px;
+  align-items: center;
 }
 
 input[type='text'] {
-  flex: 1;
+  flex: 0 1 56%;
   border: 1px solid #bfdbfe;
   border-radius: 10px;
   padding: 7px 10px;
 }
 
 input[type='color'] {
-  width: 36px;
+  width: 46px;
+  min-width: 46px;
   height: 36px;
   border: 1px solid #bfdbfe;
   border-radius: 8px;
