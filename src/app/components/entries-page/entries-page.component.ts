@@ -87,6 +87,11 @@ export class EntriesPageComponent implements OnInit {
     this.showEntryForm = false;
   }
 
+  deleteEntry(id: string): void {
+    this.storage.setEntries(this.entries.filter((entry) => entry.id !== id));
+    this.load();
+  }
+
   addCategory(value: { name: string; color: string }): void {
     const category: Category = {
       id: this.idService.uuid(),

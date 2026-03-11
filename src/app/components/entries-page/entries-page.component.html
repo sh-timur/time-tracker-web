@@ -36,6 +36,7 @@
           <th>Category</th>
           <th>Minutes</th>
           <th>Notes</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -48,6 +49,9 @@
           </td>
           <td>{{ entry.minutes }}</td>
           <td>{{ entry.notes || '' }}</td>
+          <td class="actions">
+            <button type="button" class="danger" (click)="deleteEntry(entry.id)">Delete</button>
+          </td>
         </tr>
       </tbody>
     </table>
