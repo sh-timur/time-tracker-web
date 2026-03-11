@@ -30,8 +30,26 @@ textarea {
   background: #fff;
 }
 
+input.invalid,
+select.invalid,
+textarea.invalid {
+  border-color: #ef4444;
+}
+
 textarea {
   resize: vertical;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.form-error {
+  margin: 0;
+  color: #b91c1c;
+  font-weight: 600;
 }
 
 .actions {

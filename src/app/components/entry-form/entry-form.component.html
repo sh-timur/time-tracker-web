@@ -3,12 +3,15 @@
 
   <label>
     Title
-    <input type="text" formControlName="title" maxlength="80" />
+    <input type="text" formControlName="title" maxlength="80" [class.invalid]="hasError('title')" />
+    @if (hasError('title')) {
+    <span class="error">{{ errorFor('title') }}</span>
+    }
   </label>
 
   <label>
     Category
-    <select formControlName="categoryId">
+    <select formControlName="categoryId" [class.invalid]="hasError('categoryId')">
       @if(categories.length > 0) {
       <option value="">Select category</option>
       <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
@@ -16,22 +19,35 @@
       <option value="" disabled>No categories. Create one first</option>
       }
     </select>
+    @if (hasError('categoryId')) {
+    <span class="error">{{ errorFor('categoryId') }}</span>
+    }
   </label>
 
   <label>
     Date
-    <input type="date" formControlName="date" />
+    <input type="date" formControlName="date" [class.invalid]="hasError('date')" />
+    @if (hasError('date')) {
+    <span class="error">{{ errorFor('date') }}</span>
+    }
   </label>
 
   <label>
     Minutes
-    <input type="number" formControlName="minutes" min="1" max="1440" />
+    <input type="number" formControlName="minutes" min="1" max="1440" [class.invalid]="hasError('minutes')" />
+    @if (hasError('minutes')) {
+    <span class="error">{{ errorFor('minutes') }}</span>
+    }
   </label>
 
   <label>
     Notes
     <textarea rows="3" formControlName="notes"></textarea>
   </label>
+
+  @if (form.invalid && form.touched) {
+  <p class="form-error">Please fix the highlighted fields before saving.</p>
+  }
 
   <div class="actions">
     <button type="submit">Save</button>
