@@ -33,6 +33,39 @@ export class EntryFormComponent {
     notes: ['']
   });
 
+  hasError(controlName: 'title' | 'categoryId' | 'date' | 'minutes'): boolean {
+    const control = this.form.controls[controlName];
+    return control.invalid && control.touched;
+  }
+
+  errorFor(controlName: 'title' | 'categoryId' | 'date' | 'minutes'): string {
+    const control = this.form.controls[controlName];
+
+    if (control.hasError('required')) {
+      return 'This field is required.';
+    }
+
+    if (controlName === 'title' && control.hasError('maxlength')) {
+      return 'Title must be 80 characters or fewer.';
+    }
+
+    if (controlName === 'minutes') {
+      if (control.hasError('min')) {
+        return 'Minutes must be at least 1.';
+      }
+
+      if (control.hasError('max')) {
+        return 'Minutes cannot be more than 1440.';
+      }
+
+      if (control.hasError('pattern')) {
+        return 'Minutes must be a whole number.';
+      }
+    }
+
+    return 'Please enter a valid value.';
+  }
+
   submit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
