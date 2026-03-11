@@ -1,0 +1,63 @@
+<section class="layout">
+  <div class="main">
+    <div class="filters">
+      <label>Date</label>
+      <select [(ngModel)]="datePreset">
+        <option value="today">Today</option>
+        <option value="week">This Week</option>
+        <option value="all">All</option>
+      </select>
+
+      <label>Category</label>
+      <select [(ngModel)]="categoryFilter">
+        <option value="all">All</option>
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+    </div>
+
+    <p class="total">Total: {{ formatMinutes(totalMinutes) }}</p>
+
+    <button type="button" (click)="showEntryForm = !showEntryForm">
+      {{ showEntryForm ? 'Hide Form' : 'Add Entry' }}
+    </button>
+
+    <app-entry-form
+      *ngIf="showEntryForm"
+      [categories]="categories"
+      (save)="addEntry($event)"
+      (cancel)="showEntryForm = false"
+    ></app-entry-form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Minutes</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of filteredEntries">
+          <td>{{ entry.date }}</td>
+          <td>{{ entry.title }}</td>
+          <td>
+            <span class="chip" [style.backgroundColor]="getCategory(entry.categoryId)?.color"></span>
+            {{ getCategory(entry.categoryId)?.name || 'Unknown' }}
+          </td>
+          <td>{{ entry.minutes }}</td>
+          <td>{{ entry.notes || '' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <app-categories-panel
+    class="side"
+    [categories]="categories"
+    [usedCategoryIds]="usedCategoryIds"
+    (createCategory)="addCategory($event)"
+    (deleteCategory)="deleteCategory($event)"
+  ></app-categories-panel>
+</section>

@@ -1,0 +1,19 @@
+<section class="panel">
+  <h3>Categories</h3>
+
+  <ul>
+    <li *ngFor="let category of categories">
+      <span class="chip" [style.backgroundColor]="category.color"></span>
+      <span>{{ category.name }}</span>
+      <button type="button" (click)="requestDelete(category)">Delete</button>
+    </li>
+  </ul>
+
+  <form [formGroup]="form" (ngSubmit)="addCategory()">
+    <input type="text" placeholder="New category" formControlName="name" />
+    <input type="color" formControlName="color" />
+    <button type="submit">Add</button>
+  </form>
+
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+</section>

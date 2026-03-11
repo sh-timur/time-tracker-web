@@ -1,0 +1,36 @@
+<form class="entry-form" [formGroup]="form" (ngSubmit)="submit()">
+  <h3>Add Entry</h3>
+
+  <label>
+    Title
+    <input type="text" formControlName="title" maxlength="80" />
+  </label>
+
+  <label>
+    Category
+    <select formControlName="categoryId">
+      <option value="">Select category</option>
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+    </select>
+  </label>
+
+  <label>
+    Date
+    <input type="date" formControlName="date" />
+  </label>
+
+  <label>
+    Minutes
+    <input type="number" formControlName="minutes" min="1" max="1440" />
+  </label>
+
+  <label>
+    Notes
+    <textarea rows="3" formControlName="notes"></textarea>
+  </label>
+
+  <div class="actions">
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancel.emit()">Cancel</button>
+  </div>
+</form>
