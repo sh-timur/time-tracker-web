@@ -4,11 +4,18 @@
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fafafa;
-  color: #222;
+  font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, #eef3ff 0%, #f8fbff 45%, #f5f7fb 100%);
+  color: #1f2937;
 }
 
 button {
   cursor: pointer;
+}
+
+input,
+select,
+textarea,
+button {
+  font: inherit;
 }

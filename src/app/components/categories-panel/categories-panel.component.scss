@@ -1,20 +1,41 @@
 .panel {
-  border: 1px solid #ddd;
-  padding: 12px;
-  background: #fff;
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  padding: 14px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+h3 {
+  margin: 0 0 12px;
+  color: #0f172a;
 }
 
 ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
 }
 
 li {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  padding: 6px 8px;
+  border-radius: 10px;
+}
+
+li:hover {
+  background: #eef4ff;
+}
+
+li button {
+  margin-left: auto;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+  background: #fff1f2;
+  border-radius: 999px;
+  padding: 3px 10px;
 }
 
 .chip {
@@ -29,6 +50,32 @@ form {
   gap: 8px;
 }
 
+input[type='text'] {
+  flex: 1;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 7px 10px;
+}
+
+input[type='color'] {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 2px;
+  background: #fff;
+}
+
+button[type='submit'] {
+  border: none;
+  background: #1d4ed8;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0 12px;
+  font-weight: 600;
+}
+
 .error {
   color: #b00020;
+  font-size: 0.9rem;
 }
