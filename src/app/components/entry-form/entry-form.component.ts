@@ -23,6 +23,8 @@ export class EntryFormComponent {
   @Output() save = new EventEmitter<EntryFormValue>();
   @Output() cancel = new EventEmitter<void>();
 
+  constructor(private readonly fb: FormBuilder) {}
+
   readonly form = this.fb.nonNullable.group({
     title: ['', [Validators.required, Validators.maxLength(80)]],
     categoryId: ['', [Validators.required]],
@@ -31,8 +33,6 @@ export class EntryFormComponent {
     notes: ['']
   });
 
-  constructor(private readonly fb: FormBuilder) {}
-
   submit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -40,6 +40,7 @@ export class EntryFormComponent {
     }
 
     const { title, categoryId, date, minutes, notes } = this.form.getRawValue();
+    
     this.save.emit({
       title: title.trim(),
       categoryId,

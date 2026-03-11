@@ -19,12 +19,12 @@ export class CategoriesPanelComponent {
 
   errorMessage = '';
 
+  constructor(private readonly fb: FormBuilder) { }
+
   readonly form = this.fb.nonNullable.group({
     name: ['', [Validators.required]],
     color: ['#3366ff', [Validators.required, Validators.pattern(/^#[0-9a-fA-F]{6}$/)]]
   });
-
-  constructor(private readonly fb: FormBuilder) {}
 
   addCategory(): void {
     if (this.form.invalid) {
