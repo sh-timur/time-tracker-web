@@ -49,4 +49,11 @@ export class AppComponent {
       input.value = '';
     }
   }
+
+  clearLocalStorage() {
+    if (confirm('Are you sure you want to clear all data? This action cannot be undone.')) {
+      this.storage.clearAll();
+      window.location.reload();
+    }
+  }
 }

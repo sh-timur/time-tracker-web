@@ -3,6 +3,7 @@
   <div class="actions">
     <button type="button" (click)="exportJson()">Export JSON</button>
     <button type="button" (click)="openImportPicker()">Import JSON</button>
+    <button type="button" (click)="clearLocalStorage()" class="danger">Clear Data</button>
     <input #fileInput type="file" accept="application/json" hidden (change)="importJson($event)" />
   </div>
 </header>

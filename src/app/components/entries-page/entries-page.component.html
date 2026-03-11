@@ -21,12 +21,8 @@
       {{ showEntryForm ? 'Hide Form' : 'Add Entry' }}
     </button>
 
-    <app-entry-form
-      *ngIf="showEntryForm"
-      [categories]="categories"
-      (save)="addEntry($event)"
-      (cancel)="showEntryForm = false"
-    ></app-entry-form>
+    <app-entry-form *ngIf="showEntryForm" [categories]="categories" (save)="addEntry($event)"
+      (cancel)="showEntryForm = false"></app-entry-form>
 
     <table>
       <thead>
@@ -57,11 +53,6 @@
     </table>
   </div>
 
-  <app-categories-panel
-    class="side"
-    [categories]="categories"
-    [usedCategoryIds]="usedCategoryIds"
-    (createCategory)="addCategory($event)"
-    (deleteCategory)="deleteCategory($event)"
-  ></app-categories-panel>
+  <app-categories-panel class="side" [categories]="categories" [usedCategoryIds]="usedCategoryIds"
+    (createCategory)="addCategory($event)" (deleteCategory)="deleteCategory($event)"></app-categories-panel>
 </section>

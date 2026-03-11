@@ -41,6 +41,11 @@ h1 {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.actions button.danger {
+  border: 1px solid #febfbf;
+  color: #d81d74;
+}
+
 .actions button:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 18px -12px #1d4ed8;
